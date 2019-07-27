@@ -7,17 +7,17 @@ const Blog =require('../models/blog')
 
 
    //create blogs
-   router.post('/blogs',async(req,res)=>{
-  var newUser;
+router.post('/blogs',async(req,res)=>{
+       var newUser;
 
-    const blog=new Blog({
+       const blog=new Blog({
         _id:new mongoose.Types.ObjectId(),
         title:req.body.title,
         content:req.body.content
 
-    })
-    //check for the user
-    User.findOne({email:req.body.email},async(err,data)=>{
+        })
+        //check for the user
+        User.findOne({email:req.body.email},async(err,data)=>{
         try{
         if(!data)
         {//if user doesn't exist
@@ -31,25 +31,22 @@ const Blog =require('../models/blog')
         blog.writeBy=user._id
          newUser=user
    
-       }else{
-           //if exist
-        
+       }else
+       {
+        //if exist
         blog.writeBy=data._id
-        
-   
-         newUser=data
-       
-       }
+        newUser=data
+        }
         
        await newUser.save()
        await blog.save()
         res.send(blog)
-    }catch(e){
-        res.status(500).send(e)
-       }
-    })
-     
 
+        }catch(e){
+        res.status(500).send(e)
+        }
+        })
+     
 })
 
 
