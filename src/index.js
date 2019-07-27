@@ -18,6 +18,10 @@ app.use(express.json())
 app.use(blogRouter)
 
 
+app.get('/',(req,res)=>{
+    
+})
+
 
 
 
