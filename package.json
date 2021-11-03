@@ -15,7 +15,7 @@
     "express": "^4.16.4",
     "hbs": "^4.0.4",
     "mongoose": "^5.3.16",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
